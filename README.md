@@ -10,11 +10,32 @@ Solo está configurado para detectar los siguientes tipos de RUTs:
 
 ## Forma de uso
 
+Con patrones regex por defecto
+
 ```python
 create_agent(
     model="gpt-oss:20b",
     middleware=[
         RUTMiddleware(
+            strategy="redact",
+            apply_to_input=True,
+            apply_to_output=True,
+            apply_to_tool_results=True
+        )
+    ]
+)
+```
+
+---
+
+Con patrón regex específico
+
+```python
+create_agent(
+    model="gpt-oss:20b",
+    middleware=[
+        RUTMiddleware(
+            rut_pattern=r"\b\d{7,8}\-[0-9Kk]\b",
             strategy="redact",
             apply_to_input=True,
             apply_to_output=True,
