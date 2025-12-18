@@ -51,6 +51,11 @@ PIIMiddleware(
 pytest tests
 ```
 
+## Referencia
+
+- https://github.com/langchain-ai/langchain/blob/master/libs/langchain_v1/langchain/agents/middleware/pii.py
+- https://github.com/langchain-ai/langchain/blob/master/libs/langchain_v1/tests/unit_tests/agents/middleware/implementations/test_pii.py
+
 ---
 
 ## Nota
