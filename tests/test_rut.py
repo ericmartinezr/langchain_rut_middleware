@@ -17,6 +17,16 @@ class TestRutDetection:
         assert matches[1]["start"] == 24
         assert matches[1]["end"] == 34
 
+    def test_detect_rut_pattern(self):
+        middleware = RUTMiddleware(rut_pattern=r"\b\d{7,8}\-[0-9Kk]\b")
+        content = "Mi rut es 17.573.28-4 y 19132501-K sin puntos"
+        matches = middleware._detect(content)
+
+        assert len(matches) == 1
+        assert matches[0]["value"] == "19132501-K"
+        assert matches[0]["start"] == 24
+        assert matches[0]["end"] == 34
+
     def test_not_detect_invalid_rut(self):
         middleware = RUTMiddleware()
         content = "Mi rut es 1234556-4"
